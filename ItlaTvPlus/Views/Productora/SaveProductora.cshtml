@@ -1,0 +1,38 @@
+﻿@model Application.ViewModels.Productora.SaveProductoraViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Save Productora";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card bg-dark mt-5">
+            <div class="card-header bg-primary-custom text-light">
+                <h4>@(editMode ? "Creando una nueva productora" : $"Editando la productora: {Model.Name}")</h4>
+            </div>
+            <div class="card-body">
+                <form asp-asp-controller="Productora" asp-action="@(editMode ? "Create":"Edit")">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label form-base"></label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+
+                    <button class="btn btn-primary-custom">Guardar</button>
+                    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

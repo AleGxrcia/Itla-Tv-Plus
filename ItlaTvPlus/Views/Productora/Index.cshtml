@@ -1,0 +1,44 @@
+﻿@using Application.ViewModels.Productora
+@model List<ProductoraViewModel>
+@{
+    ViewData["Title"] = "Listado de Productoras";
+}
+
+<div class="container">
+    <h1 class="">Productoras</h1>
+    <a asp-controller="Productora" asp-action="Create" class="btn btn-primary-custom m-3">
+        <i class="bi bi-plus-circle-fill"></i>
+        Agregar Productora
+    </a>
+    <div class="border rounded-3 p-4 mt-4 bg-dark-subtle">
+        <table class="table table_custom table-hover">
+            <thead class="fw-bold fs-4">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-end">Opciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach (ProductoraViewModel productora in Model)
+                {
+                    <tr>
+                        <td class="py-3">
+                            @productora.Name
+                        </td>
+                        <td class="text-end align-items-center py-3">
+                            <a class="btn btn-outline-warning btn-sm" asp-asp-controller="Productora" asp-action="Edit" asp-route-id=@productora.Id>
+                                <i class="bi bi-pencil-square"></i>
+                                Editar
+                            </a>
+                            <a class="btn btn-outline-danger btn-sm" asp-asp-controller="Productora" asp-action="Delete" asp-route-id=@productora.Id>
+                                <i class="bi bi-trash-fill"></i>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+</div>

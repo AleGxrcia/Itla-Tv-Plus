@@ -1,0 +1,35 @@
+﻿@using Application.ViewModels.Series
+@model SerieDetailsViewModel
+
+@{
+    ViewData["Title"] = "Ver " + Model.Name;
+}
+
+<div class="container">
+    <h1 class="">@Model.Name</h1>
+    <div class="row mt-3 pt-3 m-auto">
+        <div class="col-lg-10">
+            <iframe width="100%" height="515" src="https://www.youtube-nocookie.com/embed/@Model.Url"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="col-lg-2">
+            <h2>Detalles</h2>
+            <hr>
+            <p>
+                <strong>Géneros:</strong><br>
+                @if (Model.SecondaryGenreId != null)
+                {
+                    <text>@Model.PrimaryGenreName, @Model.SecondaryGenreName</text>
+                }
+                else
+                {
+                    @Model.PrimaryGenreName
+                }
+                <br><br>
+                <strong>Productora:</strong><br> @Model.ProductoraName
+            </p>
+        </div>
+    </div>
+</div>

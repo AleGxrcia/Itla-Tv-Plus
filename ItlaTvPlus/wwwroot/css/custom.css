@@ -1,0 +1,75 @@
+﻿:root {
+    --bs-purple: #6366F1;
+    --bs-gray: #191D27;
+    --bs-primary-hover: #4044ee;
+    --bs-secondary-hover: #4044ee;
+    --bs-dark-primary: #0B0F19;
+    --bs-dark-secondary: #151822;
+    --bs-primary: #0E66E7;
+}
+
+.bg-primary-custom,
+.btn-primary-custom {
+    background-color: var(--bs-purple) !important;
+    border-color: var(--bs-purple) !important;
+}
+
+.bg-secondary,
+.btn-secondary {
+    background-color: var(--bs-gray) !important;
+    border-color: var(--bs-gray) !important;
+}
+
+.btn-secondary:hover {
+    background-color: #242A38 !important
+}
+
+
+.btn-primary-custom:hover {
+    background-color: var(--bs-primary-hover) !important;
+}
+
+.bg-dark {
+    background-color: var(--bs-dark-primary) !important;
+}
+
+.bg-dark-subtle {
+    background-color: var(--bs-dark-secondary) !important;
+}
+
+.table_custom {
+    --bs-table-bg: var(--bs-dark-secondary) !important;
+    --bs-table-color: #fff !important;
+}
+
+.form-control,
+.form-select {
+    background-color: #10141E !important;
+}
+
+.form-base {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+.card_custom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    border-color: var(--bs-purple) !important;
+}
+
+.overlay-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card_custom:hover .overlay-button {
+    display: flex;
+}

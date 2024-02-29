@@ -1,0 +1,78 @@
+﻿@model Application.ViewModels.Series.SaveSerieViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Save Serie";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card bg-dark mt-5">
+            <div class="card-header bg-primary-custom text-light">
+                <h4>@(editMode ? "Creando una nueva serie" : $"Editando la serie: {Model.Name}")</h4>
+            </div>
+            <div class="card-body">
+                <form asp-asp-controller="Serie" asp-action="@(editMode ? "Create":"Edit")">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label form-base"></label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImagePath" class="form-label form-base"></label>
+                        <input type="url" asp-for="ImagePath" class="form-control" />
+                        <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Url" class="form-label form-base"></label>
+                        <input type="url" asp-for="Url" class="form-control" />
+                        <span asp-validation-for="Url" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="PrimaryGenre" class="form-label form-base"></label>
+                                <select asp-for="PrimaryGenre" class="form-select"
+                                        asp-items=@(new SelectList(Model.Generos, "Id", "Name"))>
+                                    <option value="0">Seleccione una opcion</option>
+                                </select>
+                                <span asp-validation-for="PrimaryGenre" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="SecondaryGenre" class="form-label form-base"></label><text class="text-muted fw-light"> (opcional)</text>
+                                <select asp-for="SecondaryGenre" class="form-select"
+                                        asp-items=@(new SelectList(Model.Generos, "Id", "Name"))>
+                                    <option value="0">Seleccione una opcion</option>
+                                </select>
+                                <span asp-validation-for="SecondaryGenre" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ProductoraId" class="form-label form-base"></label>
+                        <select asp-for="ProductoraId" class="form-select"
+                                asp-items=@(new SelectList(Model.Productoras, "Id", "Name"))>
+                            <option value="0">Seleccione una opcion</option>
+                        </select>
+                        <span asp-validation-for="ProductoraId" class="text-danger"></span>
+                    </div>
+
+                    <button class="btn btn-primary-custom">Guardar</button>
+                    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
